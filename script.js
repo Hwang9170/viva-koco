@@ -78,3 +78,15 @@ function toggleMenu() {
     menuToggle.classList.toggle('active');
     sideMenu.classList.toggle('active');
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+  const menuToggle = document.getElementById('menu-toggle');
+  const sideMenu = document.getElementById('side-menu');
+
+  menuToggle.addEventListener('click', function() {
+      this.classList.toggle('active');
+      sideMenu.classList.toggle('active');
+  });
+});
+
+// 슬라이드쇼 기능을 위한 JavaScript 코드도 추가해야 합니다.
