@@ -10,14 +10,14 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 20px 40px;
-  background-color: #282121;
+  background: linear-gradient(to right, yellow 50%, red 75%, blue 100%);
   color: white;
 }
 
 .navbar .logo {
   font-size: 1.5em;
   font-weight: bold;
-  color: white;
+  color: rgb(0, 0, 0);
   text-decoration: none;
 }
 
@@ -181,8 +181,8 @@ body {
 }
 
 .black-button {
-  background-color: #000;
-  color: white;
+  background-color: #fbfbfb;
+  color: rgb(0, 0, 0);
   border: none;
   padding: 10px 20px;
   font-size: 16px;
@@ -193,7 +193,7 @@ body {
 }
 
 .black-button:hover {
-  background-color: #333;
+  background-color: #c4bbbb;
 }
 
 .image {
@@ -296,4 +296,11 @@ img.jj2 {
 .wrapper .instagram:hover .tooltip::before {
   background: #e4405f;
   color: #fff;
+}
+
+.banner {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  margin: 0%;
 }
