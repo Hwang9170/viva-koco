@@ -1,26 +1,3 @@
-
-function toggleMenu() {
- console.log('toggleMenu 함수 실행'); // 디버깅용 로그
- const menuToggle = document.getElementById('menu-toggle');
- const sideMenu = document.getElementById('side-menu');
- 
- menuToggle.classList.toggle('active');
- sideMenu.classList.toggle('active');
- 
- console.log('메뉴 상태:', sideMenu.classList.contains('active')); // 디버깅용 로그
-
- // body에 클래스 추가하여 스크롤 제어
- if (sideMenu.classList.contains('active')) {
-     document.body.classList.add('nav-open'); // 스크롤 잠금
- } else {
-     document.body.classList.remove('nav-open'); // 스크롤 잠금 해제
- }
-}
-
-let slideIndex = 1;
-let slideInterval;
-
-// 페이지 로드 시 실행
 document.addEventListener('DOMContentLoaded', function() {
     showSlides(slideIndex);
     autoSlide();
@@ -29,10 +6,14 @@ document.addEventListener('DOMContentLoaded', function() {
     const sideMenu = document.getElementById('side-menu');
 
     menuToggle.addEventListener('click', function() {
-        this.classList.toggle('active');
+        menuToggle.classList.toggle('active');
         sideMenu.classList.toggle('active');
+        document.body.classList.toggle('nav-open'); // 스크롤 잠금
     });
 });
+
+let slideIndex = 1;
+let slideInterval;
 
 // 다음/이전 컨트롤
 function plusSlides(n) {
@@ -69,24 +50,3 @@ function autoSlide() {
         plusSlides(1);
     }, 5000); // 5초마다 슬라이드 변경
 }
-
-// 메뉴 토글 함수
-function toggleMenu() {
-    const menuToggle = document.getElementById('menu-toggle');
-    const sideMenu = document.getElementById('side-menu');
-    
-    menuToggle.classList.toggle('active');
-    sideMenu.classList.toggle('active');
-}
-
-document.addEventListener('DOMContentLoaded', function() {
-  const menuToggle = document.getElementById('menu-toggle');
-  const sideMenu = document.getElementById('side-menu');
-
-  menuToggle.addEventListener('click', function() {
-      this.classList.toggle('active');
-      sideMenu.classList.toggle('active');
-  });
-});
-
-// 슬라이드쇼 기능을 위한 JavaScript 코드도 추가해야 합니다.
