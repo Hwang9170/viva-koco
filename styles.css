@@ -10,14 +10,14 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 20px 40px;
-  background: linear-gradient(to right, yellow 50%, red 75%, blue 100%);
+  background: rgb(0, 0, 0);
   color: white;
 }
 
 .navbar .logo {
   font-size: 1.5em;
   font-weight: bold;
-  color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
   text-decoration: none;
 }
 
