@@ -13,6 +13,7 @@ function openModal(cardId) {
   const modal = document.getElementById('modal');
   const modalBody = document.getElementById('modal-body');
   modal.style.display = 'block';
+  document.body.style.overflow = 'hidden'; // 배경 스크롤 잠금
 
   if (cardId === 1) {
       modalBody.innerHTML = `
@@ -25,7 +26,6 @@ function openModal(cardId) {
           <img src="/team/team_image/005.png" alt="Card News 1" style="width:100%">
           <img src="/team/team_image/006.png" alt="Card News 1" style="width:100%">
           <img src="/team/team_image/007.png" alt="Card News 1" style="width:100%">
-
       `;
   } else if (cardId === 2) {
       modalBody.innerHTML = `
@@ -41,27 +41,23 @@ function openModal(cardId) {
       `;
   } else if (cardId === 4) {
     modalBody.innerHTML = `
-        <h2>Card News 3</h2>
-        <p>Detailed information about card news 3.</p>
-        <img src="/cardnews_image/3.png" alt="Card News 3" style="width:100%">
+        <h2>Card News 4</h2>
+        <p>Detailed information about card news 4.</p>
+        <img src="/cardnews_image/4.png" alt="Card News 4" style="width:100%">
     `;
-} else if (cardId === 5) {
-  modalBody.innerHTML = `
-      <h2>Card News 3</h2>
-      <p>Detailed information about card news 3.</p>
-      <img src="/cardnews_image/3.png" alt="Card News 3" style="width:100%">
-  `;
-}
+  }
 }
 
 function closeModal() {
   const modal = document.getElementById('modal');
   modal.style.display = 'none';
+  document.body.style.overflow = 'auto'; // 배경 스크롤 잠금 해제
 }
 
 window.onclick = function(event) {
   const modal = document.getElementById('modal');
   if (event.target === modal) {
       modal.style.display = 'none';
+      document.body.style.overflow = 'auto'; // 배경 스크롤 잠금 해제
   }
 }
