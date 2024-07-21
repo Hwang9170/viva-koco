@@ -3,6 +3,7 @@ body {
   margin: 0;
   padding: 0;
   background-color: #f0f0f0;
+  overflow-x: hidden; /* 가로 스크롤 제거 */
 }
 
 .navbar {
@@ -84,12 +85,25 @@ body {
 
 .card {
   background-color: white;
-  width: 30%;
+  width: 100%;
+  max-width: 30%;
   margin: 10px;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
+}
+
+@media (max-width: 768px) {
+  .card {
+    max-width: 45%;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    max-width: 100%;
+  }
 }
 
 .card img {
@@ -118,8 +132,7 @@ body {
   top: 0;
   width: 100%;
   height: 100%;
-  overflow: auto;
-  background-color: rgb(0,0,0);
+  overflow: hidden;
   background-color: rgba(0,0,0,0.4);
   padding-top: 60px;
 }
@@ -130,7 +143,9 @@ body {
   padding: 20px;
   border: 1px solid #888;
   width: 80%;
+  max-height: 80%;
   border-radius: 10px;
+  overflow-y: auto; /* 팝업 내용 스크롤 가능 */
 }
 
 .close {
@@ -145,6 +160,10 @@ body {
   color: black;
   text-decoration: none;
   cursor: pointer;
+}
+
+body.nav-open {
+  overflow: hidden; /* 배경 스크롤 잠금 */
 }
 
 .wrapper {
