@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Portafolio de Snayler</title>
+   <link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+   <link rel="stylesheet"
+href="https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap">
+   <style>
+       body {
+           font-family: 'Architects Daughter', cursive;
+           background: linear-gradient(45deg, #f3f4f6, #e2e8f0);
+           display: flex;
+           flex-direction: column;
+           justify-content: center;
+           align-items: center;
+           height: 100vh;
+           margin: 0;
+           transition: background 0.5s;
+       }
+
+       .theme-toggle {
+           position: absolute;
+           top: 20px;
+           right: 20px;
+       }
+
+       .theme-toggle button {
+           padding: 10px 20px;
+           cursor: pointer;
+           border: none;
+           background: #0073b1;
+           color: #ffffff;
+           border-radius: 5px;
+           transition: background 0.3s;
+       }
+
+       .theme-toggle button:hover {
+           background: #005580;
+       }
+
+       .social-spinwheel {
+           position: absolute;
+           top: 20vw;
+           left: 20vw;
+           display: flex;
+           flex-direction: column;
+           align-items: center;
+       }
+
+       #spinwheel-button {
+           padding: 10px;
+           cursor: pointer;
+           border: none;
+           background: #0073b1;
+           color: #ffffff;
+           border-radius: 50%;
+           transition: background 0.3s;
+           font-size: 24px;
+           display: flex;
+           justify-content: center;
+           align-items: center;
+       }
+
+       #spinwheel-button:hover {
+           background: #005580;
+       }
+
+       .spinwheel {
+           position: absolute;
+           width: 5vw;
+           height: 5vw;
+           margin-top: 0;
+           display: none;
+           opacity: 0;
+       }
+
+       .spinwheel a {
+           position: absolute;
+           text-decoration: none;
+           color: #ffffff;
+           background: #0073b1;
+           padding: 10px;
+           border-radius: 50%;
+           display: flex;
+           justify-content: center;
+           align-items: center;
+           width: 40px;
+           height: 40px;
+           transition: transform 0.3s;
+       }
+
+       .spinwheel a:hover {
+           background: #005580;
+       }
+
+       .spinwheel.active {
+           display: flex;
+           animation: fadeIn 0.5s forwards;
+       }
+
+       @keyframes fadeIn {
+           from {
+               opacity: 0;
+           }
+
+           to {
+               opacity: 1;
+           }
+       }
+
+       .spinwheel.active a:nth-child(1) {
+           transform: rotate(0deg) translate(60px) rotate(0deg);
+       }
+
+       .spinwheel.active a:nth-child(2) {
+           transform: rotate(72deg) translate(60px) rotate(-72deg);
+       }
+
+       .spinwheel.active a:nth-child(3) {
+           transform: rotate(144deg) translate(60px) rotate(-144deg);
+       }
+
+       .spinwheel.active a:nth-child(4) {
+           transform: rotate(216deg) translate(60px) rotate(-216deg);
+       }
+
+       .spinwheel.active a:nth-child(5) {
+           transform: rotate(288deg) translate(60px) rotate(-288deg);
+       }
+
+       .card-container {
+           perspective: 1000px;
+       }
+
+       .card {
+           width: 300px;
+           height: 400px;
+           position: relative;
+           transform-style: preserve-3d;
+           transition: transform 0.6s;
+       }
+
+       .card.hover {
+           transform: rotateY(180deg);
+       }
+
+       .card-front,
+       .card-back {
+           width: 100%;
+           height: 100%;
+           position: absolute;
+           backface-visibility: hidden;
+           display: flex;
+           flex-direction: column;
+           justify-content: center;
+           align-items: center;
+           padding: 20px;
+           box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+           border-radius: 10px;
+           transition: background 0.5s, color 0.5s;
+       }
+
+       .card-front {
+           background: #ffffff;
+       }
+
+       .card-back {
+           background: #f1f1f1;
+           transform: rotateY(180deg);
+       }
+
+       .card img {
+           width: 100px;
+           height: 100px;
+           border-radius: 50%;
+           margin-bottom: 20px;
+       }
+
+       .card h1 {
+           margin-bottom: 10px;
+       }
+
+       .flip-icon {
+           margin-top: 20px;
+           font-size: 24px;
+           cursor: pointer;
+       }
+
+       body.dark-mode {
+           background: linear-gradient(45deg, #2c3e50, #4ca1af);
+       }
+
+       body.dark-mode .card-front,
+       body.dark-mode .card-back {
+           background: #2c3e50;
+           color: #ecf0f1;
+       }
+
+       body.dark-mode .spinwheel a {
+           background: #34495e;
+       }
+
+       body.dark-mode #spinwheel-button,
+       body.dark-mode .theme-toggle button {
+           background: #34495e;
+           color: #ecf0f1;
+       }
+   </style>
+</head>
+
+<body>
+   <div class="theme-toggle">
+       <button id="theme-button"><i id="theme-icon" class="fas
+fa-sun"></i></button>
+   </div>
+   <div class="social-spinwheel">
+       <button id="spinwheel-button"><i class="fas fa-share-alt"></i></button>
+       <div class="spinwheel">
+           <a href="https://www.tiktok.com" target="_blank"><i
+class="fab fa-tiktok"></i></a>
+           <a href="https://www.instagram.com" target="_blank"><i
+class="fab fa-instagram"></i></a>
+           <a href="https://www.youtube.com" target="_blank"><i
+class="fab fa-youtube"></i></a>
+           <a href="https://github.com" target="_blank"><i class="fab
+fa-github"></i></a>
+           <a href="https://linkedin.com" target="_blank"><i
+class="fab fa-linkedin"></i></a>
+       </div>
+   </div>
+   <div class="card-container">
+       <div class="card">
+           <div class="card-front">
+               <img src="https://via.placeholder.com/100" alt="Foto
+de ejemplo">
+               <h1>Snayler</h1>
+               <div class="flip-icon">↺</div>
+           </div>
+           <div class="card-back">
+               <p>Lorem ipsum dolor sit amet, consectetur adipisicing
+elit. Atque quidem quasi voluptates. Odit
+                   officiis ea deleniti, reprehenderit corporis eius?
+Fugiat autem provident sit consectetur voluptas
+                   atque nostrum, quo illum veniam?</p>
+           </div>
+       </div>
+   </div>
+   <script>
+       document.addEventListener('DOMContentLoaded', () => {
+           const themeButton = document.getElementById('theme-button');
+           const themeIcon = document.getElementById('theme-icon');
+           const spinwheelButton = document.getElementById('spinwheel-button');
+           const spinwheel = document.querySelector('.spinwheel');
+           const card = document.querySelector('.card');
+
+           themeButton.addEventListener('click', () => {
+               document.body.classList.toggle('dark-mode');
+               if (document.body.classList.contains('dark-mode')) {
+                   themeIcon.classList.replace('fa-sun', 'fa-moon');
+               } else {
+                   themeIcon.classList.replace('fa-moon', 'fa-sun');
+               }
+           });
+
+           spinwheelButton.addEventListener('click', () => {
+               spinwheel.classList.toggle('active');
+               if (spinwheel.classList.contains('active')) {
+                   spinwheel.style.display = 'flex';
+               } else {
+                   setTimeout(() => {
+                       spinwheel.style.display = 'none';
+                   }, 500); // Espera a que termine la animación
+               }
+           });
+
+           card.addEventListener('click', () => {
+               card.classList.toggle('hover');
+           });
+       });
+   </script>
+</body>
+
+</html>
