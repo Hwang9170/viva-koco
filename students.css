@@ -46,7 +46,6 @@ body {
   z-index: 1000;
   padding-top: 60px;
 }
-
 .side-menu.active {
   right: 0;
 }
