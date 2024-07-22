@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda de Ropa</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        header {
+            background: linear-gradient(to right, #ff6b6b, #f06595);
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background: #e64980;
+            padding: 10px 0;
+        }
+        nav a {
+            color: #fff;
+            padding: 15px 20px;
+            text-decoration: none;
+            display: block;
+            transition: background 0.3s ease;
+        }
+        nav a:hover {
+            background: #ff6b6b;
+        }
+        .container {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .hero {
+            text-align: center;
+            padding: 50px 0;
+            background: #ffe3e3;
+            border-radius: 10px;
+            margin-bottom: 40px;
+        }
+        .hero h1 {
+            margin: 0;
+            font-size: 3em;
+        }
+        .products, .categories {
+            margin: 40px 0;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .product, .category {
+            background: #e9e9e9;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin: 20px 0;
+            transition: transform 0.3s ease;
+        }
+        .product:hover, .category:hover {
+            transform: translateY(-5px);
+        }
+        .contact {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 40px 0;
+        }
+        footer {
+            background: #e64980;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+        }
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+        }
+        .contact-form button {
+            background: #ff6b6b;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background 0.3s ease;
+        }
+        .contact-form button:hover {
+            background: #f06595;
+        }
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            nav a {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Tienda de Ropa</h1>
+    </header>
+    <nav>
+        <a href="#products">Productos</a>
+        <a href="#categories">Categorías</a>
+        <a href="#contact">Contacto</a>
+    </nav>
+    <div class="container">
+        <section class="hero">
+            <h1>Bienvenidos a nuestra Tienda de Ropa</h1>
+            <p>Descubre las últimas tendencias y novedades en moda.</p>
+        </section>
+        <section id="products" class="products">
+            <h2>Productos Destacados</h2>
+            <div class="product">
+                <h3>Producto 1</h3>
+                <p>Descripción breve del producto 1.</p>
+            </div>
+            <div class="product">
+                <h3>Producto 2</h3>
+                <p>Descripción breve del producto 2.</p>
+            </div>
+            <div class="product">
+                <h3>Producto 3</h3>
+                <p>Descripción breve del producto 3.</p>
+            </div>
+        </section>
+        <section id="categories" class="categories">
+            <h2>Categorías</h2>
+            <div class="category">
+                <h3>Hombres</h3>
+                <p>Ropa y accesorios para hombres.</p>
+            </div>
+            <div class="category">
+                <h3>Mujeres</h3>
+                <p>Ropa y accesorios para mujeres.</p>
+            </div>
+            <div class="category">
+                <h3>Niños</h3>
+                <p>Ropa y accesorios para niños.</p>
+            </div>
+        </section>
+        <section id="contact" class="contact">
+            <h2>Contacto</h2>
+            <form class="contact-form">
+                <input type="text" id="name" placeholder="Nombre" required>
+                <input type="email" id="email" placeholder="Email" required>
+                <textarea id="message" placeholder="Mensaje" required></textarea>
+                <button type="submit">Enviar</button>
+            </form>
+        </section>
+    </div>
+    <footer>
+        &copy; 2024 Tienda de Ropa. Todos los derechos reservados.
+    </footer>
+
+    <script>
+        document.querySelector('.contact-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            alert('Mensaje enviado. ¡Gracias por contactarnos!');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio de Juan Gómez</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Nanum Gothic', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #E6EBE0;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(to right, #36C9C6, #9BC1BC);
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        header h1 {
+            margin: 0;
+            color: #333;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            margin: 0;
+        }
+        nav ul li {
+            margin: 0 1rem;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 700;
+            transition: color 0.3s;
+        }
+        nav ul li a:hover {
+            color: #36C9C6;
+        }
+        .lang-select {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 1rem;
+        }
+        .lang-select button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            margin-right: 1rem;
+            font-size: 1rem;
+            color: #333;
+            transition: color 0.3s;
+        }
+        .lang-select button:hover {
+            color: #36C9C6;
+        }
+        .home, .about, .portfolio {
+            display: none;
+        }
+        .active {
+            display: block;
+        }
+        .section {
+            padding: 4rem 0;
+        }
+        .section h2 {
+            margin-bottom: 1rem;
+            color: #ED6A5A;
+        }
+        .about p, .portfolio p {
+            line-height: 1.6;
+        }
+        .portfolio-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .portfolio-item {
+            flex: 1 1 calc(33.333% - 1rem);
+            background: #FFF;
+            color: #333;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        .portfolio-item:hover {
+            transform: translateY(-10px);
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            background: linear-gradient(to right, #36C9C6, #9BC1BC);
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+            color: #333;
+        }
+        .flags img {
+            width: 50px;
+            height: auto;
+        }
+        .icon-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .icon-row i {
+            font-size: 1.5rem;
+            color: #ED6A5A;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Juan Gómez</h1>
+            <nav>
+                <ul>
+                    <li><a href="#home" onclick="showSection('home')">Home</a></li>
+                    <li><a href="#about" onclick="showSection('about')">Acerca de mí</a></li>
+                    <li><a href="#portfolio" onclick="showSection('portfolio')">Portafolio</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div class="lang-select container">
+        <button onclick="changeLanguage('es')">Español</button>
+        <button onclick="changeLanguage('en')">English</button>
+        <button onclick="changeLanguage('ko')">한국어</button>
+    </div>
+    <main class="container">
+        <section id="home" class="home section active">
+            <div class="flags">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Colombia.svg" alt="Bandera de Colombia">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/0/09/Flag_of_South_Korea.svg" alt="Bandera de Corea del Sur">
+            </div>
+            <h2 data-lang="home_title">Bienvenido a mi Portafolio</h2>
+            <p data-lang="home_text1">Bienvenidos a mi página web. Soy Juan Gómez, estudiante del curso de Viva Koco, y estoy encantado de aprender sobre tecnología, uso de IA y cultura coreana.</p>
+            <p data-lang="home_text2">Explora para saber más sobre mí y mi trabajo.</p>
+            <div class="icon-row">
+                <i class="fas fa-laptop-code"></i>
+                <i class="fas fa-robot"></i>
+                <i class="fas fa-globe"></i>
+            </div>
+        </section>
+        <section id="about" class="about section">
+            <h2 data-lang="about_title">Acerca de Mí</h2>
+            <p data-lang="about_text">Hola, soy Juan Gómez. Soy un apasionado estudiante del curso de Viva Koco, dedicado a aprender y explorar el fascinante mundo de la tecnología, el uso de la inteligencia artificial y la rica cultura coreana. Mi pasión por la tecnología me impulsa a seguir aprendiendo y creando proyectos innovadores.</p>
+        </section>
+        <section id="portfolio" class="portfolio section">
+            <h2 data-lang="portfolio_title">Portafolio</h2>
+            <p data-lang="portfolio_text">Aquí hay algunos proyectos en los que he trabajado. Cada uno de ellos refleja mi creciente conocimiento y habilidades en el campo de la tecnología y la IA.</p>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <h3>Proyecto 1</h3>
+                    <p>Descripción del Proyecto 1</p>
+                </div>
+                <div class="portfolio-item">
+                    <h3>Proyecto 2</h3>
+                    <p>Descripción del Proyecto 2</p>
+                </div>
+                <div class="portfolio-item">
+                    <h3>Proyecto 3</h3>
+                    <p>Descripción del Proyecto 3</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Juan Gómez. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        const translations = {
+            es: {
+                home_title: "Bienvenido a mi Portafolio",
+                home_text1: "Bienvenidos a mi página web. Soy Juan Gómez, estudiante del curso de Viva Koco, y estoy encantado de aprender sobre tecnología, uso de IA y cultura coreana.",
+                home_text2: "Explora para saber más sobre mí y mi trabajo.",
+                about_title: "Acerca de Mí",
+                about_text: "Hola, soy Juan Gómez. Soy un apasionado estudiante del curso de Viva Koco, dedicado a aprender y explorar el fascinante mundo de la tecnología, el uso de la inteligencia artificial y la rica cultura coreana. Mi pasión por la tecnología me impulsa a seguir aprendiendo y creando proyectos innovadores.",
+                portfolio_title: "Portafolio",
+                portfolio_text: "Aquí hay algunos proyectos en los que he trabajado. Cada uno de ellos refleja mi creciente conocimiento y habilidades en el campo de la tecnología y la IA."
+            },
+            en: {
+                home_title: "Welcome to my Portfolio",
+                home_text1: "Welcome to my website. I am Juan Gómez, a student in the Viva Koco course, and I am delighted to learn about technology, AI use, and Korean culture.",
+                home_text2: "Explore to learn more about me and my work.",
+                about_title: "About Me",
+                about_text: "Hello, I am Juan Gómez. I am a passionate student of the Viva Koco course, dedicated to learning and exploring the fascinating world of technology, the use of artificial intelligence, and the rich Korean culture. My passion for technology drives me to continue learning and creating innovative projects.",
+                portfolio_title: "Portfolio",
+                portfolio_text: "Here are some projects I have worked on. Each reflects my growing knowledge and skills in the field of technology and AI."
+            },
+            ko: {
+                home_title: "내 포트폴리오에 오신 것을 환영합니다",
+                home_text1: "내 웹사이트에 오신 것을 환영합니다. 저는 Viva Koco 과정의 학생인 Juan Gómez입니다. 나는 기술, AI 사용 및 한국 문화에 대해 배우게 되어 기쁩니다.",
+                home_text2: "나와 내 작업에 대해 더 알아보려면 탐색하십시오.",
+                about_title: "내 소개",
+                about_text: "안녕하세요, 저는 Juan Gómez입니다. 나는 Viva Koco 과정의 열정적인 학생으로 기술의 놀라운 세계, 인공지능의 사용 및 풍부한 한국 문화를 배우고 탐구하는 데 전념하고 있습니다. 기술에 대한 나의 열정은 계속 배우고 혁신적인 프로젝트를 만드는 원동력이 됩니다.",
+                portfolio_title: "포트폴리오",
+                portfolio_text: "여기 내가 작업한 몇 가지 프로젝트가 있습니다. 각각은 기술과 AI 분야에서 나의 성장하는 지식과 기술을 반영합니다."
+            }
+        };
+
+        function showSection(section) {
+            const sections = document.querySelectorAll('.section');
+            sections.forEach((sec) => sec.classList.remove('active'));
+            document.getElementById(section).classList.add('active');
+        }
+
+        function changeLanguage(lang) {
+            const elements = document.querySelectorAll('[data-lang]');
+            elements.forEach(element => {
+                const key = element.getAttribute('data-lang');
+                element.textContent = translations[lang][key];
+            });
+        }
+    </script>
+</body>
+</html>

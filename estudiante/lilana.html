@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seguimiento de Progreso</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f8ff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            margin: 0;
+        }
+
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            font-family: 'Georgia', serif;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            color: #00796b;
+            margin-bottom: 10px;
+        }
+
+        form {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        input[type="text"] {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            margin-right: 10px;
+        }
+
+        button {
+            padding: 10px;
+            border: none;
+            background: #00796b;
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background: #004d40;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            background: #fafafa;
+            margin: 5px 0;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            transition: background-color 0.3s, text-decoration 0.3s;
+        }
+
+        .task-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        li.completed {
+            background: #dcedc8;
+            text-decoration: line-through;
+        }
+
+        li.in-progress {
+            background: #ffecb3;
+        }
+
+        li.abandoned {
+            background: #ffcdd2;
+            text-decoration: line-through;
+        }
+
+        li .delete {
+            color: red;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+
+        li .complete, li .in-progress-btn, li .abandon {
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+        li .complete {
+            color: green;
+        }
+
+        li .in-progress-btn {
+            color: #ff9800;
+        }
+
+        li .abandon {
+            color: #d32f2f;
+        }
+
+        .progress-container {
+            background: #e0e0e0;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+
+        .progress-bar {
+            height: 20px;
+            background: #00796b;
+            width: 0%;
+            transition: width 0.3s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        li {
+            animation: fadeIn 0.5s ease-in;
+        }
+    </style>
+</head>
+<body>
+    <h1>Seguimiento de Progreso</h1>
+
+    <div class="container">
+        <h2>Series</h2>
+        <form id="series-form">
+            <input type="text" id="new-series" placeholder="Agregar nueva serie..." required>
+            <button type="submit">Agregar</button>
+        </form>
+        <ul id="series-list"></ul>
+    </div>
+
+    <div class="container">
+        <h2>Películas</h2>
+        <form id="movies-form">
+            <input type="text" id="new-movie" placeholder="Agregar nueva película..." required>
+            <button type="submit">Agregar</button>
+        </form>
+        <ul id="movies-list"></ul>
+    </div>
+
+    <div class="container">
+        <h2>Animes</h2>
+        <form id="animes-form">
+            <input type="text" id="new-anime" placeholder="Agregar nuevo anime..." required>
+            <button type="submit">Agregar</button>
+        </form>
+        <ul id="animes-list"></ul>
+    </div>
+
+    <div class="container">
+        <h2>Webtoon</h2>
+        <form id="webtoons-form">
+            <input type="text" id="new-webtoon" placeholder="Agregar nuevo webtoon..." required>
+            <button type="submit">Agregar</button>
+        </form>
+        <ul id="webtoons-list"></ul>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const addTask = (formId, listId, inputId) => {
+                const form = document.getElementById(formId);
+                const list = document.getElementById(listId);
+                const input = document.getElementById(inputId);
+
+                form.addEventListener('submit', function(event) {
+                    event.preventDefault();
+
+                    // Crear un nuevo elemento de lista
+                    const taskItem = document.createElement('li');
+
+                    const taskHeader = document.createElement('div');
+                    taskHeader.className = 'task-header';
+
+                    const taskTitle = document.createElement('span');
+                    taskTitle.textContent = input.value;
+
+                    // Crear botones de completar, en proceso, y abandonar
+                    const completeBtn = document.createElement('span');
+                    completeBtn.textContent = '✔';
+                    completeBtn.className = 'complete';
+
+                    const inProgressBtn = document.createElement('span');
+                    inProgressBtn.textContent = '➔';
+                    inProgressBtn.className = 'in-progress-btn';
+
+                    const abandonBtn = document.createElement('span');
+                    abandonBtn.textContent = '✖';
+                    abandonBtn.className = 'abandon';
+
+                    const deleteBtn = document.createElement('span');
+                    deleteBtn.textContent = '🗑';
+                    deleteBtn.className = 'delete';
+
+                    // Añadir botones al encabezado de tarea
+                    taskHeader.appendChild(taskTitle);
+                    taskHeader.appendChild(inProgressBtn);
+                    taskHeader.appendChild(completeBtn);
+                    taskHeader.appendChild(abandonBtn);
+                    taskHeader.appendChild(deleteBtn);
+
+                    // Crear contenedor de barra de progreso
+                    const progressContainer = document.createElement('div');
+                    progressContainer.className = 'progress-container';
+
+                    const progressBar = document.createElement('div');
+                    progressBar.className = 'progress-bar';
+                    progressContainer.appendChild(progressBar);
+
+                    // Añadir el encabezado y la barra de progreso al elemento de lista
+                    taskItem.appendChild(taskHeader);
+                    taskItem.appendChild(progressContainer);
+
+                    // Añadir el nuevo elemento de lista al ul
+                    list.appendChild(taskItem);
+
+                    // Limpiar el input
+                    input.value = '';
+
+                    // Evento para marcar como completada
+                    completeBtn.addEventListener('click', function() {
+                        taskItem.classList.toggle('completed');
+                        taskItem.classList.remove('in-progress', 'abandoned');
+                        progressBar.style.width = '100%';
+                    });
+
+                    // Evento para marcar como en proceso
+                    inProgressBtn.addEventListener('click', function() {
+                        taskItem.classList.toggle('in-progress');
+                        taskItem.classList.remove('completed', 'abandoned');
+                        progressBar.style.width = '50%';
+                    });
+
+                    // Evento para marcar como abandonada
+                    abandonBtn.addEventListener('click', function() {
+                        taskItem.classList.toggle('abandoned');
+                        taskItem.classList.remove('completed', 'in-progress');
+                        progressBar.style.width = '0%';
+                    });
+
+                    // Evento para eliminar tarea
+                    deleteBtn.addEventListener('click', function() {
+                        list.removeChild(taskItem);
+                    });
+                });
+
+                // Permitir eliminar y cambiar el estado de las tareas al hacer clic en los botones correspondientes
+                list.addEventListener('click', function(event) {
+                    const taskItem = event.target.parentElement.parentElement;
+                    const progressBar = taskItem.querySelector('.progress-bar');
+
+                    if (event.target.className === 'delete') {
+                        list.removeChild(taskItem);
+                    } else if (event.target.className === 'complete') {
+                        taskItem.classList.toggle('completed');
+                        taskItem.classList.remove('in-progress', 'abandoned');
+                        progressBar.style.width = '100%';
+                    } else if (event.target.className === 'in-progress-btn') {
+                        taskItem.classList.toggle('in-progress');
+                        taskItem.classList.remove('completed', 'abandoned');
+                        progressBar.style.width = '50%';
+                    } else if (event.target.className === 'abandon') {
+                        taskItem.classList.toggle('abandoned');
+                        taskItem.classList.remove('completed', 'in-progress');
+                        progressBar.style.width = '0%';
+                    }
+                });
+            };
+
+            addTask('series-form', 'series-list', 'new-series');
+            addTask('movies-form', 'movies-list', 'new-movie');
+            addTask('animes-form', 'animes-list', 'new-anime');
+            addTask('webtoons-form', 'webtoons-list', 'new-webtoon');
+        });
+    </script>
+</body>
+</html>
+
+El lun, 22 jul 2024 a la(s) 10:05 a.m., MichiLilith Doramaniaca (seriesypeliculasgc@gmail.com) escribió:
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Tareas</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f8ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 400px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            font-family: 'Georgia', serif;
+        }
+
+        form {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        input[type="text"] {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            margin-right: 10px;
+        }
+
+        button {
+            padding: 10px;
+            border: none;
+            background: #00796b;
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background: #004d40;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            background: #fafafa;
+            margin: 5px 0;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            transition: background-color 0.3s, text-decoration 0.3s;
+        }
+
+        .task-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        li.completed {
+            background: #dcedc8;
+            text-decoration: line-through;
+        }
+
+        li.in-progress {
+            background: #ffecb3;
+        }
+
+        li.abandoned {
+            background: #ffcdd2;
+            text-decoration: line-through;
+        }
+
+        li .delete {
+            color: red;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+
+        li .complete, li .in-progress-btn, li .abandon {
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+        li .complete {
+            color: green;
+        }
+
+        li .in-progress-btn {
+            color: #ff9800;
+        }
+
+        li .abandon {
+            color: #d32f2f;
+        }
+
+        .progress-container {
+            background: #e0e0e0;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+
+        .progress-bar {
+            height: 20px;
+            background: #00796b;
+            width: 0%;
+            transition: width 0.3s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        li {
+            animation: fadeIn 0.5s ease-in;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Lista de Tareas</h1>
+        <form id="task-form">
+            <input type="text" id="new-task" placeholder="Agregar nueva tarea..." required>
+            <button type="submit">Agregar</button>
+        </form>
+        <ul id="task-list"></ul>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const taskForm = document.getElementById('task-form');
+            const taskList = document.getElementById('task-list');
+            const newTaskInput = document.getElementById('new-task');
+
+            taskForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+
+                // Crear un nuevo elemento de lista
+                const taskItem = document.createElement('li');
+
+                const taskHeader = document.createElement('div');
+                taskHeader.className = 'task-header';
+
+                const taskTitle = document.createElement('span');
+                taskTitle.textContent = newTaskInput.value;
+
+                // Crear botones de completar, en proceso, y abandonar
+                const completeBtn = document.createElement('span');
+                completeBtn.textContent = '✔';
+                completeBtn.className = 'complete';
+
+                const inProgressBtn = document.createElement('span');
+                inProgressBtn.textContent = '➔';
+                inProgressBtn.className = 'in-progress-btn';
+
+                const abandonBtn = document.createElement('span');
+                abandonBtn.textContent = '✖';
+                abandonBtn.className = 'abandon';
+
+                const deleteBtn = document.createElement('span');
+                deleteBtn.textContent = '🗑';
+                deleteBtn.className = 'delete';
+
+                // Añadir botones al encabezado de tarea
+                taskHeader.appendChild(taskTitle);
+                taskHeader.appendChild(inProgressBtn);
+                taskHeader.appendChild(completeBtn);
+                taskHeader.appendChild(abandonBtn);
+                taskHeader.appendChild(deleteBtn);
+
+                // Crear contenedor de barra de progreso
+                const progressContainer = document.createElement('div');
+                progressContainer.className = 'progress-container';
+
+                const progressBar = document.createElement('div');
+                progressBar.className = 'progress-bar';
+                progressContainer.appendChild(progressBar);
+
+                // Añadir el encabezado y la barra de progreso al elemento de lista
+                taskItem.appendChild(taskHeader);
+                taskItem.appendChild(progressContainer);
+
+                // Añadir el nuevo elemento de lista al ul
+                taskList.appendChild(taskItem);
+
+                // Limpiar el input
+                newTaskInput.value = '';
+
+                // Evento para marcar como completada
+                completeBtn.addEventListener('click', function() {
+                    taskItem.classList.toggle('completed');
+                    taskItem.classList.remove('in-progress', 'abandoned');
+                    progressBar.style.width = '100%';
+                });
+
+                // Evento para marcar como en proceso
+                inProgressBtn.addEventListener('click', function() {
+                    taskItem.classList.toggle('in-progress');
+                    taskItem.classList.remove('completed', 'abandoned');
+                    progressBar.style.width = '50%';
+                });
+
+                // Evento para marcar como abandonada
+                abandonBtn.addEventListener('click', function() {
+                    taskItem.classList.toggle('abandoned');
+                    taskItem.classList.remove('completed', 'in-progress');
+                    progressBar.style.width = '0%';
+                });
+
+                // Evento para eliminar tarea
+                deleteBtn.addEventListener('click', function() {
+                    taskList.removeChild(taskItem);
+                });
+            });
+
+            // Permitir eliminar y cambiar el estado de las tareas al hacer clic en los botones correspondientes
+            taskList.addEventListener('click', function(event) {
+                if (event.target.className === 'delete') {
+                    const taskItem = event.target.parentElement.parentElement;
+                    taskList.removeChild(taskItem);
+                } else if (event.target.className === 'complete') {
+                    const taskItem = event.target.parentElement.parentElement;
+                    taskItem.classList.toggle('completed');
+                    taskItem.classList.remove('in-progress', 'abandoned');
+                    const progressBar = taskItem.querySelector('.progress-bar');
+                    progressBar.style.width = '100%';
+                } else if (event.target.className === 'in-progress-btn') {
+                    const taskItem = event.target.parentElement.parentElement;
+                    taskItem.classList.toggle('in-progress');
+                    taskItem.classList.remove('completed', 'abandoned');
+                    const progressBar = taskItem.querySelector('.progress-bar');
+                    progressBar.style.width = '50%';
+                } else if (event.target.className === 'abandon') {
+                    const taskItem = event.target.parentElement.parentElement;
+                    taskItem.classList.toggle('abandoned');
+                    taskItem.classList.remove('completed', 'in-progress');
+                    const progressBar = taskItem.querySelector('.progress-bar');
+                    progressBar.style.width = '0%';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
