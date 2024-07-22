@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .header {
+            background: #2E7D32; /* Verde */
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+        .intro {
+            text-align: center;
+            padding: 50px 0;
+            background-color: #FFEB3B; /* Amarillo */
+            color: #2E7D32; /* Verde */
+        }
+        .products, .skills, .contact {
+            padding: 50px 0;
+        }
+        h2 {
+            text-align: center;
+            color: #2E7D32; /* Verde */
+        }
+        .product-item, .skill-item {
+            background: white;
+            margin: 20px 0;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        .contact-form {
+            background: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            width: 50%;
+            margin: auto;
+        }
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .contact-form button {
+            padding: 10px 20px;
+            background: #2E7D32; /* Verde */
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        .contact-form button:hover {
+            background: #388E3C; /* Verde más oscuro */
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1>ALLNATURAL COLOMBIA</h1>
+            <p>Desarrollador Web | Diseñador Gráfico | Freelance</p>
+        </div>
+    </header>
+
+    <section class="intro container">
+        <h2>Sobre nosotros</h2>
+        <p>ALLNATURAL COLOMBIA S.A.S es una empresa colombiana con base en Bucaramanga donde su principal comercial es la importación, exportación y distribución de productos naturales con bajo porcentaje calórico de azúcares y lípidos para el consumo humano, que aporten nutrientes y mejoren el rendimiento de la actividad física de los consumidores. Contamos con marca registrada COOLSWEET.</p>
+    </section>
+
+    <section class="products container">
+        <h2>Productos</h2>
+        <div class="product-item">
+            <h3>Café de Especialidad</h3>
+            <p>Café cultivado en el municipio de matanza-santader a 1450 msnm Aroma: natural
+cuerpo: Medio sedoso
+Acidez: citrica
+Sabor: Panela, nuez , especies.
+tostion: medio
+Puntaje en taza :83.5 . </p>
+        </div>
+        <div class="product-item">
+            <h3>Café con CBD</h3>
+            <p>Café con infusión de CBD producido en Norte de Santander, con beneficios antioxidantes, analgésicos, antiinflamatorios el cual da una energía y relajación al cuerpo mente y espiritu, previene la ansiedad y el estrés.</p>
+        </div>
+    </section>
+
+    <section class="skills container">
+        <h2>Habilidades</h2>
+        <div class="skill-item">
+            <h3>HTML & CSS</h3>
+            <p>Descripción de habilidades en HTML y CSS.</p>
+        </div>
+        <div class="skill-item">
+            <h3>JavaScript</h3>
+            <p>Descripción de habilidades en JavaScript.</p>
+        </div>
+        <div class="skill-item">
+            <h3>React & Angular</h3>
+            <p>Descripción de habilidades en React y Angular.</p>
+        </div>
+    </section>
+
+    <section class="contact container">
+        <h2>Contacto</h2>
+        <form class="contact-form">
+            <input type="text" name="name" placeholder="Nombre" required>
+            <input type="email" name="email" placeholder="Correo Electrónico" required>
+            <textarea name="message" rows="5" placeholder="Mensaje" required></textarea>
+            <button type="submit">Enviar</button>
+        </form>
+    </section>
+</body>
+</html>
