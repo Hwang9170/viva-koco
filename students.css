@@ -46,6 +46,7 @@ body {
   z-index: 1000;
   padding-top: 60px;
 }
+
 .side-menu.active {
   right: 0;
 }
@@ -76,9 +77,9 @@ body {
 
 .styled-button {
   --glow-color: rgb(217, 176, 255);
-  --glow-spread-color: #124bf4c7;
+  --glow-spread-color: rgba(191, 123, 255, 0.781);
   --enhanced-glow-color: rgb(231, 206, 255);
-  --btn-color: rgb(62, 41, 214);
+  --btn-color: rgb(100, 61, 136);
   border: .25em solid var(--glow-color);
   padding: 1em 3em;
   color: var(--glow-color);
@@ -121,6 +122,27 @@ body {
   box-shadow: 0 0 0.6em .25em var(--glow-color),
               0 0 2.5em 2em var(--glow-spread-color),
               inset 0 0 .5em .25em var(--glow-color);
+}
+
+.button-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.button-container a {
+  flex: 1 1 calc(50% - 20px);
+  display: flex;
+  justify-content: center;
+  margin: 10px;
+}
+
+@media (max-width: 600px) {
+  .button-container a {
+    flex: 1 1 100%;
+    justify-content: center;
+  }
 }
 
 .wrapper {
@@ -216,4 +238,4 @@ body {
   box-sizing: border-box;
   margin: auto;
   text-align: center;
-} 
+}
