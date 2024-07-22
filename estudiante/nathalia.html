@@ -1,0 +1,148 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chef Portfolio</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #a2d5c6;
+            color: #fff;
+            text-align: center;
+            padding: 2rem 0;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+        nav {
+            background-color: #c1e1dc;
+            text-align: center;
+            padding: 1rem 0;
+        }
+        nav a {
+            color: #333;
+            margin: 0 1rem;
+            text-decoration: none;
+            font-size: 1.2rem;
+        }
+        .container {
+            padding: 2rem;
+        }
+        .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+            color: #555;
+        }
+        .icon {
+            width: 100px;
+            height: 100px;
+        }
+        .portfolio-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+        .portfolio-item img {
+            border-radius: 50%;
+            width: 200px;
+            height: 200px;
+        }
+        .portfolio-item h3 {
+            margin-top: 1rem;
+            font-size: 1.5rem;
+        }
+        footer {
+            background-color: #a2d5c6;
+            color: #fff;
+            text-align: center;
+            padding: 1rem 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        .icon-container {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .icon-container img {
+            width: 50px;
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Chef Portfolio</h1>
+    </header>
+    <nav>
+        <a href="#about">About Me</a>
+        <a href="#skills">Skills</a>
+        <a href="#work">Work</a>
+        <a href="#contact">Contact</a>
+    </nav>
+    <div class="container">
+        <section id="about">
+            <h2 class="section-title">About Me</h2>
+            <p>Hello! I am a professional chef with a passion for creating delicious and visually stunning dishes. With years of experience in various cuisines, I aim to bring joy and satisfaction through my culinary creations.</p>
+        </section>
+        <section id="skills">
+            <h2 class="section-title">Skills</h2>
+            <div class="icon-container">
+                <div>
+                    <img src="https://img.icons8.com/fluent/48/000000/chef-hat.png" alt="Cooking Icon">
+                    <p>Cooking</p>
+                </div>
+                <div>
+                    <img src="https://img.icons8.com/fluent/48/000000/knife.png" alt="Knife Icon">
+                    <p>Knife Skills</p>
+                </div>
+                <div>
+                    <img src="https://img.icons8.com/fluent/48/000000/restaurant-menu.png" alt="Menu Icon">
+                    <p>Menu Planning</p>
+                </div>
+            </div>
+        </section>
+        <section id="work">
+            <h2 class="section-title">Work</h2>
+            <div class="portfolio-item">
+                <img src="https://www.seriouseats.com/thmb/X6meT67QgjLwQgGZYTL--EKtTqg=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/ajiaco-santafere-031-e073d0981f5d4e1682b59cc5a56b0c2d.jpg" alt="Ajiaco Colombiano">
+                <h3>Ajiaco Colombiano</h3>
+            </div>
+            <div class="portfolio-item">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/2/25/Bandeja_Paisa.jpg" alt="Bandeja Paisa">
+                <h3>Bandeja Paisa</h3>
+            </div>
+            <div class="portfolio-item">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Kimchi_bokkeumbap.jpg/800px-Kimchi_bokkeumbap.jpg" alt="Kimchi Bokkeumbap">
+                <h3>Kimchi Bokkeumbap</h3>
+            </div>
+            <div class="portfolio-item">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Bulgogi-Korean_food-01.jpg/800px-Bulgogi-Korean_food-01.jpg" alt="Bulgogi">
+                <h3>Bulgogi</h3>
+            </div>
+        </section>
+        <section id="contact">
+            <h2 class="section-title">Contact</h2>
+            <p>If you would like to get in touch, please reach out via email or phone. I look forward to connecting with you!</p>
+            <p>Email: chef@example.com</p>
+            <p>Phone: (123) 456-7890</p>
+        </section>
+    </div>
+    <footer>
+        &copy; 2024 Chef Portfolio. All rights reserved.
+    </footer>
+</body>
+</html>

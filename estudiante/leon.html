@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Tareas Pendientes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 600px;
+            width: 100%;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #555;
+        }
+        .task {
+            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .priority-selector {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        .priority-option {
+            flex: 1;
+            text-align: center;
+            padding: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .priority-option:hover {
+            background-color: #f2f2f2;
+        }
+        .urgent {
+            background-color: #f44336; /* Rojo para Urgente */
+        }
+        .high-priority {
+            background-color: #ff9800; /* Naranja para Prioritario */
+        }
+        .on-time {
+            background-color: #fdd835; /* Amarillo para A Tiempo */
+        }
+        .can-wait {
+            background-color: #4caf50; /* Verde para Puede Esperar */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Lista de Tareas Pendientes</h1>
+       
+        <div class="task" id="task1">
+            <div class="priority-selector">
+                <div class="priority-option urgent" onclick="setPriority('task1', 'urgent')">Urgente</div>
+                <div class="priority-option high-priority" onclick="setPriority('task1', 'high-priority')">Prioritario</div>
+                <div class="priority-option on-time" onclick="setPriority('task1', 'on-time')">A Tiempo</div>
+                <div class="priority-option can-wait" onclick="setPriority('task1', 'can-wait')">Puede Esperar</div>
+            </div>
+            <p>Reunión con los consumidores financieros</p>
+        </div>
+       
+        <div class="task" id="task2">
+            <div class="priority-selector">
+                <div class="priority-option urgent" onclick="setPriority('task2', 'urgent')">Urgente</div>
+                <div class="priority-option high-priority" onclick="setPriority('task2', 'high-priority')">Prioritario</div>
+                <div class="priority-option on-time" onclick="setPriority('task2', 'on-time')">A Tiempo</div>
+                <div class="priority-option can-wait" onclick="setPriority('task2', 'can-wait')">Puede Esperar</div>
+            </div>
+            <p>Planear conferencia</p>
+        </div>
+       
+        <div class="task" id="task3">
+            <div class="priority-selector">
+                <div class="priority-option urgent" onclick="setPriority('task3', 'urgent')">Urgente</div>
+                <div class="priority-option high-priority" onclick="setPriority('task3', 'high-priority')">Prioritario</div>
+                <div class="priority-option on-time" onclick="setPriority('task3', 'on-time')">A Tiempo</div>
+                <div class="priority-option can-wait" onclick="setPriority('task3', 'can-wait')">Puede Esperar</div>
+            </div>
+            <p>Reunión con los directores</p>
+        </div>
+       
+        <div class="task" id="task4">
+            <div class="priority-selector">
+                <div class="priority-option urgent" onclick="setPriority('task4', 'urgent')">Urgente</div>
+                <div class="priority-option high-priority" onclick="setPriority('task4', 'high-priority')">Prioritario</div>
+                <div class="priority-option on-time" onclick="setPriority('task4', 'on-time')">A Tiempo</div>
+                <div class="priority-option can-wait" onclick="setPriority('task4', 'can-wait')">Puede Esperar</div>
+            </div>
+            <p>Revisión de la productividad</p>
+        </div>
+       
+    </div>
+   
+    <script>
+        function setPriority(taskId, priority) {
+            // Limpiar todas las clases de prioridad del elemento
+            document.getElementById(taskId).classList.remove('urgent', 'high-priority', 'on-time', 'can-wait');
+           
+            // Agregar la clase de prioridad seleccionada
+            document.getElementById(taskId).classList.add(priority);
+        }
+    </script>
+</body>
+</html>
