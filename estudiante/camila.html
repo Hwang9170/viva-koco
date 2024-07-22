@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Videojuegos Indie</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Press Start 2P', cursive;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .header h1 {
+            color: #343a40;
+            font-size: 36px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .header p {
+            color: #6c757d;
+            margin-bottom: 20px;
+        }
+        .game {
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: #f8d7da;
+            border-radius: 12px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+        .game:hover {
+            transform: translateY(-5px);
+        }
+        .game img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-right: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+        .game-details {
+            flex: 1;
+        }
+        .game h2 {
+            font-size: 24px;
+            color: #dc3545;
+            margin-bottom: 10px;
+        }
+        .game p {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+        .btn-add-more {
+            display: block;
+            margin: 20px auto;
+            padding: 12px 24px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #fff;
+            background-color: #28a745;
+            border: 2px solid #28a745;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .btn-add-more:hover {
+            background-color: #218838;
+            border-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Videojuegos Indie</h1>
+            <p>Descubre algunos de los mejores videojuegos indie.</p>
+        </div>
+
+        <div class="game">
+            <img src="https://upload.wikimedia.org/wikipedia/en/thumb/2/29/Papers%2C_Please_Logo.png/220px-Papers%2C_Please_Logo.png" alt="Papers, Please">
+            <div class="game-details">
+                <h2>Papers, Please</h2>
+                <p>Papers, Please es un juego indie de simulación y puzles donde juegas como un inspector de inmigración en la ficticia República de Arstotzka.</p>
+                <p><strong>Desarrollador:</strong> Lucas Pope</p>
+                <p><strong>Lanzamiento:</strong> 2013</p>
+            </div>
+        </div>
+
+        <div class="game">
+            <img src="https://upload.wikimedia.org/wikipedia/en/thumb/2/25/Stardew_Valley_artwork.png/220px-Stardew_Valley_artwork.png" alt="Stardew Valley">
+            <div class="game-details">
+                <h2>Stardew Valley</h2>
+                <p>Stardew Valley es un juego indie de simulación de granja donde puedes cultivar cultivos, criar animales, explorar cuevas y mucho más.</p>
+                <p><strong>Desarrollador:</strong> ConcernedApe</p>
+                <p><strong>Lanzamiento:</strong> 2016</p>
+            </div>
+        </div>
+
+        <div class="game">
+            <img src="https://upload.wikimedia.org/wikipedia/en/thumb/a/a6/The_Binding_of_Isaac_rebirth.svg/220px-The_Binding_of_Isaac_rebirth.svg.png" alt="The Binding of Isaac">
+            <div class="game-details">
+                <h2>The Binding of Isaac</h2>
+                <p>The Binding of Isaac es un juego indie de acción y roguelike, donde controlas a Isaac, un niño que debe escapar de su madre a través de mazmorras generadas aleatoriamente.</p>
+                <p><strong>Desarrollador:</strong> Edmund McMillen</p>
+                <p><strong>Lanzamiento:</strong> 2011</p>
+            </div>
+        </div>
+
+        <button class="btn-add-more">Agregar más juegos</button>
+       
+    </div>
+</body>
+</html>

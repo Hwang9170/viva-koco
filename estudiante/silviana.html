@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio Diseño</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fefefe;
+            color: #333;
+        }
+        header {
+            background: #ff6f91;
+            color: #fff;
+            padding: 30px 0;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        nav {
+            background: #ff85a1;
+            padding: 10px 0;
+            text-align: center;
+        }
+        nav a {
+            color: #fff;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        section {
+            padding: 40px 20px;
+            max-width: 1000px;
+            margin: auto;
+        }
+        #about {
+            background: #ffbfd0;
+            border-radius: 10px;
+            padding: 20px;
+        }
+        #projects .project {
+            background: #ffe3e9;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .project img {
+            max-width: 100%;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+        footer {
+            background: #ff6f91;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+        }
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Portafolio Diseño </h1>
+    </header>
+    <nav>
+        <a href="#about">Acerca de</a>
+        <a href="#projects">Proyectos</a>
+        <a href="#contact">Contacto</a>
+    </nav>
+    <section id="about">
+        <h2>Acerca de Mí</h2>
+        <p>¡Hola! Soy silvana, diseñadora gráfica. Aquí puedes ver algunos de mis proyectos recientes.</p>
+    </section>
+    <section id="projects">
+        <h2>Proyectos</h2>
+        <div class="projects">
+            <div class="project">
+                <h3>Proyecto 1</h3>
+                <img src="https://via.placeholder.com/300" alt="Proyecto 1">
+                <p> proyecto 1.</p>
+            </div>
+            <div class="project">
+                <h3>Proyecto 2</h3>
+                <img src="https://via.placeholder.com/300" alt="Proyecto 2">
+                <p> proyecto 2.</p>
+            </div>
+            <div class="project">
+                <h3>Proyecto 3</h3>
+                <img src="https://via.placeholder.com/300" alt="Proyecto 3">
+                <p>proyecto 3.</p>
+            </div>
+        </div>
+    </section>
+    <section id="contact">
+        <h2>Contacto</h2>
+        <p>Si deseas ponerte en contacto conmigo, puedes enviarme un correo a <a href="mailto:tuemail@ejemplo.com">tuemail@ejemplo.com</a> o seguirme en mis redes sociales.</p>
+    </section>
+    <footer>
+        <p>&copy; 2024 Portafolio de silvana. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>
