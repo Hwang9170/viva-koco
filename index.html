@@ -172,7 +172,25 @@
  </div>
 </footer>
 
-    <script src="script.js"></script>
+<script type="text/javascript">
+  (function() {
+    var t = document.createElement("script");
+    t.type = "text/javascript";
+    t.async = !0;
+    t.src = "https://api.catchtalk.co.kr/survey.js";
+    var e = document.getElementsByTagName("script")[0];
+    e.parentNode.insertBefore(t, e);
+
+    t.onload = function() {
+      setTimeout(function() {
+        window.CatchTalk.init({
+          environmentId: "66bbff52d1bab513b331892e",
+          apiHost: "https://api.catchtalk.co.kr"
+        });
+      }, 500);
+    };
+  })();
+</script>
    
 </body>
 </html>
